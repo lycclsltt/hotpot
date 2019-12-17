@@ -31,7 +31,7 @@ class Hello(NoAuth):
 
 ###### 2.添加路由 (可参考router/router.py)
 ```python
-from controller.example import Hello, GetParam
+from controller.example import Hello
 
 routers = {
     '/hello': Hello,
@@ -39,11 +39,11 @@ routers = {
 ```
 ###### 3.执行执行./dev_restart.sh，访问 http://127.0.0.1:10001/hello
 
-##### 获取GET/POST请求参数, 通过req()方法，若参数不存在返回空字符串
+##### 获取GET/POST请求参数
 ```python
 class GetParam(NoAuth):
     def handle(self):
-        name = self.req('name')
+        name = self.req('name')  #req()方法可以获取GET/POST请求中的参数，若参数不存在返回空字符串
         return 'Hello ' + name
 ```
 
@@ -62,7 +62,8 @@ class GetParam(NoAuth):
 ```html
 <h1>Hello {{data.name}}</h1>
 ```
-###### 2.在controller里添加类
+###### 2.添加路由，参考上述方法
+###### 3.在controller里添加类
 ```python
 class Page(NoAuth):
     def handle(self):
@@ -71,3 +72,4 @@ class Page(NoAuth):
         return self.render('page.html')  #渲染static/html/page.html 页面
 ```
 ###### 3.执行执行./dev_restart.sh，访问 http://127.0.0.1:10001/page?name=小明
+
