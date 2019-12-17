@@ -17,3 +17,12 @@ class Page(NoAuth):
         name = self.req('name')
         self.data['name'] = name
         return self.render('page.html')
+
+
+from decouple import config
+
+
+class ReadConfig(NoAuth):
+    def handle(self):
+        token = config('API_TOKEN')
+        return 'token is:' + token

@@ -72,3 +72,19 @@ class Page(NoAuth):
 ```
 ###### 4.执行执行./dev_restart.sh，访问 http://127.0.0.1:10001/page?name=小明
 
+##### 读取配置文件
+###### settings.ini.dev是测试环境配置文件，settings.ini.prod是生产环境测试文件
+###### 相对应的dev_restart.sh是测试环境启动脚本，prod_restart.sh是生产环境启动脚本
+###### 首先在settings.ini.dev中添加配置（如果是生产环境，添加到settings.ini.prod中）,例如
+```ini
+API_TOKEN = hotpot_api_token
+```
+###### 然后在controller中读取，例如
+```python
+from decouple import config
+class ReadConfig(NoAuth):
+    def handle(self):
+        token = config('API_TOKEN')
+        return 'token is:' + token
+```
+###### 访问 http://127.0.0.1:10001/read_config
