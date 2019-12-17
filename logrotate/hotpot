@@ -1,0 +1,8 @@
+/var/log/hotpot/*.log
+{
+daily
+dateext
+copytruncate
+nocompress
+rotate 7
+}

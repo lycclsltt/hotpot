@@ -1,0 +1,34 @@
+[settings]
+
+#请求日志
+ACCESS_LOG = false
+
+#用于调试，生产环境设为false
+DEBUG = true
+
+#是否同时输出日志到终端，生产环境设为false
+LOG_OUTPUT = false
+
+#监听端口
+PORT = 10001
+
+#工作线程数
+WORKER_NUM = 1
+
+#日志文件
+LOG_FILE = ./logs/ui.log
+
+#session过期时间
+SESSION_EXPIRE = 36000
+
+#数据库配置
+DB_HOST = 127.0.0.1
+DB_PORT = 3306
+DB_USER = xdev
+DB_PWD = xdev
+DB_NAME = test_db
+
+###ldap登录验证
+LDAP_SERVER = ldap://10.10.36.28:389
+LDAP_BIND = CN=readonly,CN=Users,DC=snowball,DC=com
+LDAP_PASS = n/p96ibhXD2)FewrY$c8^wDf
