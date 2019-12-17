@@ -61,7 +61,7 @@ class GetParam(NoAuth):
 ```html
 <h1>Hello {{data.name}}</h1>
 ```
-###### 2.添加路由，参考上述方法
+###### 2.添加路由，参考上面的方法
 ###### 3.在controller里添加类
 ```python
 class Page(NoAuth):
@@ -70,5 +70,5 @@ class Page(NoAuth):
         self.data['name'] = name  #赋值到data属性中，data属性用来渲染页面
         return self.render('page.html')  #渲染static/html/page.html 页面
 ```
-###### 3.执行执行./dev_restart.sh，访问 http://127.0.0.1:10001/page?name=小明
+###### 4.执行执行./dev_restart.sh，访问 http://127.0.0.1:10001/page?name=小明
 
