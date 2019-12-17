@@ -57,7 +57,7 @@ class GetParam(NoAuth):
         else:
             return self.resp(data = 'Hello ' + name)
 ```
-##### 服务端渲染
+##### 服务端渲染 (与jinja2模版引擎语法一致)
 ###### 1.在static/html中添加一个page.html
 ```html
 <h1>Hello {{data.name}}</h1>
