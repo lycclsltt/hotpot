@@ -46,3 +46,28 @@ class GetParam(NoAuth):
         name = self.req('name')
         return 'Hello ' + name
 ```
+
+##### 返回json格式的接口数据
+```python
+class GetParam(NoAuth):
+    def handle(self):
+        name = self.req('name')
+        if name == '':
+            return self.resp(errno=1, errmsg = 'name参数必填')
+        else:
+            return self.resp(data = 'Hello ' + name)
+```
+##### 服务端渲染
+###### 1.在static/html中添加一个page.html
+```html
+<h1>Hello {{data.name}}</h1>
+```
+###### 2.在controller里添加类
+```python
+class Page(NoAuth):
+    def handle(self):
+        name = self.req('name')   #获取请求参数
+        self.data['name'] = name  #赋值到data属性中，data属性用来渲染页面
+        return self.render('page.html')  #渲染static/html/page.html 页面
+```
+###### 3.执行执行./dev_restart.sh，访问 http://127.0.0.1:10001/page?name=小明

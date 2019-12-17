@@ -8,7 +8,7 @@ from decouple import config
 
 class Common(HTTPMethodView):
 
-    env = Environment(loader=FileSystemLoader('static/adminlte'))
+    env = Environment(loader=FileSystemLoader('static/html/'))
 
     def __init__(self):
         self.request = None
