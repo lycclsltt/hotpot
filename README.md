@@ -1,8 +1,7 @@
-@[TOC] 目录
 
 ## hotpot是什么？
 
-###### hotpot是一个简单、易用、几乎0学习成本的高性能python框架。集成了Session/ORM/日志处理/LDAP 以及常用工具类库。使用hotpot可以快速进行业务开发，例如编写网站或API。帮助你快速完成开发任务，彻底告别996!
+###### hotpot是一个简单、易用、基于sanic之上封装的python框架。集成了Session/ORM/日志处理/LDAP 以及常用工具类库。使用hotpot可以快速进行业务开发，例如编写网站或API。
 
 
 ## 环境要求
