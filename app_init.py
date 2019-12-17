@@ -4,8 +4,10 @@ import logger.logger as log
 
 def app_init():
     '''
-    执行应用初始化
-    :return:
+    这里做一些初始化，例如初始化MySQL连接池
     '''
-    db.mysql.mysql_db.connect()
+    try:
+        db.mysql.mysql_db.connect()
+    except Exception as ex:
+        pass
     log.info('app init finish')
