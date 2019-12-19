@@ -1,15 +1,28 @@
+<!-- TOC -->
+
+- [hotpot是什么？](#hotpot是什么)
+- [环境要求](#环境要求)
+- [快速开始](#快速开始)
+            - [快速开发一个API](#快速开发一个api)
+            - [获取GET/POST请求参数](#获取getpost请求参数)
+            - [返回json格式的接口数据](#返回json格式的接口数据)
+            - [服务端渲染 (与jinja2模版引擎语法一致)](#服务端渲染-与jinja2模版引擎语法一致)
+            - [读取配置文件](#读取配置文件)
+            - [ORM使用 (可参考model/example.py)](#orm使用-可参考modelexamplepy)
+
+<!-- /TOC -->
 
 ## hotpot是什么？
 
-###### hotpot是一个简单、易用、基于sanic之上封装的python框架。集成了Session/ORM/日志处理/LDAP 以及常用工具类库。使用hotpot可以快速进行业务开发，例如编写网站或API。
+hotpot是一个简单、易用的python框架。基于高性能sanic, 集成了Session/ORM/日志处理/LDAP 以及常用工具类库。使用hotpot可以快速进行业务开发，例如编写网站或API。
 
 
 ## 环境要求
-###### python3.6+
+python3.6+
 
 ## 快速开始
 
-##### 环境准备
+环境准备
 ```shell script
 1.获取源码: git clone 或从git 下载
 2.安装依赖: pip3 install -r ./requirements.txt
@@ -19,7 +32,7 @@
 
 
 ##### 快速开发一个API
-###### 1.在controller里创建一个类，继承NoAuth类，重写handle()方法（可参考controller/example.py）
+1.在controller里创建一个类，继承NoAuth类，重写handle()方法（可参考controller/example.py）
 ```python
 from controller.common import NoAuth
 
@@ -29,7 +42,7 @@ class Hello(NoAuth):
         return 'Hello hotpot!'
 ```
 
-###### 2.添加路由 (可参考router/router.py)
+2.添加路由 (可参考router/router.py)
 ```python
 from controller.example import Hello
 
@@ -37,7 +50,7 @@ routers = {
     '/hello': Hello,
 }
 ```
-###### 3.执行执行./dev_restart.sh，访问 http://127.0.0.1:10001/hello
+3.执行执行./dev_restart.sh，访问 http://127.0.0.1:10001/hello
 
 ##### 获取GET/POST请求参数
 ```python
@@ -58,12 +71,12 @@ class GetParam(NoAuth):
             return self.resp(data = 'Hello ' + name)
 ```
 ##### 服务端渲染 (与jinja2模版引擎语法一致)
-###### 1.在static/html中添加一个page.html
+1.在static/html中添加一个page.html
 ```html
 <h1>Hello {{data.name}}</h1>
 ```
-###### 2.添加路由，参考上面的方法
-###### 3.在controller里添加类
+2.添加路由，参考上面的方法
+3.在controller里添加类
 ```python
 class Page(NoAuth):
     def handle(self):
@@ -71,16 +84,16 @@ class Page(NoAuth):
         self.data['name'] = name  #赋值到data属性中，data属性用来渲染页面
         return self.render('page.html')  #渲染static/html/page.html 页面
 ```
-###### 4.执行执行./dev_restart.sh，访问 http://127.0.0.1:10001/page?name=小明
+4.执行执行./dev_restart.sh，访问 http://127.0.0.1:10001/page?name=小明
 
 ##### 读取配置文件
-###### settings.ini.dev是测试环境配置文件，settings.ini.prod是生产环境测试文件
-###### 相对应的dev_restart.sh是测试环境启动脚本，prod_restart.sh是生产环境启动脚本
-###### 首先在settings.ini.dev中添加配置（如果是生产环境，添加到settings.ini.prod中）,例如
+settings.ini.dev是测试环境配置文件，settings.ini.prod是生产环境测试文件。
+相对应的dev_restart.sh是测试环境启动脚本，prod_restart.sh是生产环境启动脚本。
+首先在settings.ini.dev中添加配置（如果是生产环境，添加到settings.ini.prod中）,例如：
 ```ini
 API_TOKEN = hotpot_api_token
 ```
-###### 然后在controller中读取，例如
+然后在controller中读取，例如：
 ```python
 from decouple import config
 class ReadConfig(NoAuth):
@@ -88,10 +101,10 @@ class ReadConfig(NoAuth):
         token = config('API_TOKEN')
         return 'token is:' + token
 ```
-###### 访问 http://127.0.0.1:10001/read_config
+访问 http://127.0.0.1:10001/read_config
 
 ##### ORM使用 (可参考model/example.py)
-###### 1.在model中创建一个类，继承CommonModel类
+1.在model中创建一个类，继承CommonModel类
 ```python
 from model.common import CommonModel
 from agileutil.db4 import Orm
@@ -141,7 +154,7 @@ class ExampleModel(CommonModel):
             'test_name', '=', name).first()
         return row
 ```
-###### 2.在controller中调用
+2.在controller中调用
 ```python
 from controller.common import NoAuth
 from model.example import ExampleModel
