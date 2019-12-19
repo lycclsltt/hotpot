@@ -7,6 +7,7 @@
   - [获取GET/POST请求参数](#获取getpost请求参数)
   - [返回json格式的接口数据](#返回json格式的接口数据)
   - [服务端渲染 (与jinja2模版引擎语法一致)](#服务端渲染-与jinja2模版引擎语法一致)
+  - [配置文件说明](#配置文件说明)
   - [读取配置文件](#读取配置文件)
   - [ORM使用 (可参考model/example.py)](#orm使用-可参考modelexamplepy)
 
@@ -84,9 +85,70 @@ class Page(NoAuth):
 ```
 4.执行执行./dev_restart.sh，访问 http://127.0.0.1:10001/page?name=小明
 
+##### 配置文件说明
+配置文件有两个，用于将测试环境、生产环境区分开分别是：
+settings.ini.dev：测试环境配置文件，通过dev_restart.sh启动服务后，读取该文件作为配置文件。
+settings.ini.prod：生产环境配置文件，通过prod_restart.sh启动服务后，读取该文件作为配置文件。
+
+目前支持的配置项有：
+```ini
+[settings]
+
+#版本号，服务启动后会将版本号写入到日志文件中，便于排查问题
+VERSION = 0.0.1
+
+#请求日志, true开启，false关闭
+ACCESS_LOG = false
+
+#用于调试，true开启，false关闭，开启后会在终端显示更多运行时信息
+DEBUG = true
+
+#是否同时输出日志到终端，true开启，false关闭，若开启，日志不但会写入到日志文件，还会输出到终端，推荐在测试环境使用
+LOG_OUTPUT = false
+
+#监听端口
+PORT = 10001
+
+#工作线程数
+WORKER_NUM = 1
+
+#日志文件
+LOG_FILE = ./logs/app.log
+
+#是否启用session，true启用, false关闭
+SESSION_ENABLE = true
+
+#session过期时间，单位：秒
+SESSION_EXPIRE = 36000
+
+#数据库配置
+#地址
+DB_HOST = 127.0.0.1
+#端口
+DB_PORT = 3306
+#用户名
+DB_USER = xdev
+#密码 
+DB_PWD = xdev
+#数据库名称
+DB_NAME = test_db
+#连接池最小连接数
+DB_POOL_MIN_CONNECTION = 10
+#连接超时
+DB_POOL_CONNECT_TIMEOUT = 10
+#读取超时
+DB_POOL_READ_TIMEOUT = 10
+
+###ldap登录验证
+LDAP_SERVER = ldap://10.10.36.28:389
+LDAP_BIND = CN=readonly,CN=Users,DC=xxx,DC=com
+LDAP_PASS = xxxx
+
+#请求API时用于验证的token
+API_TOKEN = hotpot_api_token
+```
+
 ##### 读取配置文件
-settings.ini.dev是测试环境配置文件，settings.ini.prod是生产环境测试文件。
-相对应的dev_restart.sh是测试环境启动脚本，prod_restart.sh是生产环境启动脚本。
 首先在settings.ini.dev中添加配置（如果是生产环境，添加到settings.ini.prod中）,例如：
 ```ini
 API_TOKEN = hotpot_api_token

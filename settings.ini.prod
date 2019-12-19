@@ -30,5 +30,5 @@ DB_NAME = test_db
 
 ###ldap登录验证
 LDAP_SERVER = ldap://10.10.36.28:389
-LDAP_BIND = CN=readonly,CN=Users,DC=snowball,DC=com
-LDAP_PASS = n/p96ibhXD2)FewrY$c8^wDf
+LDAP_BIND = CN=readonly,CN=Users,DC=xxxxx,DC=com
+LDAP_PASS = xxxxx
