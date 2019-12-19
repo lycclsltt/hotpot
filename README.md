@@ -14,7 +14,9 @@
 
 ## hotpot是什么？
 
-hotpot是一个简单、易用的python框架。基于高性能sanic, 集成了Session/ORM/日志处理/LDAP 以及常用工具类库。使用hotpot可以快速进行业务开发，例如编写网站或API。
+hotpot是一个简单、易用的python框架。基于高性能sanic, 集成了Session/ORM/日志处理/LDAP 以及常用工具类库。使用hotpot可以快速进行业务开发，例如编写网站或API。相比django更简单，轻松上手。相比flask, web.py 等框架，更具有规范性，更适合大型工程，同时性能更好。
+   
+hotpot设计的初衷是：python代码拥有很高的开发效率，但由于开发者能力不同，易造成开发速度快，后期维护成本高的问题。hotpot希望通过框架的约定规则和限制规避此类问题，增强python程序的可维护性。
 
 
 ## 环境要求
