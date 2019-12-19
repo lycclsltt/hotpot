@@ -87,7 +87,7 @@ class Page(NoAuth):
 4.执行执行./dev_restart.sh，访问 http://127.0.0.1:10001/page?name=小明
 
 ##### 配置文件说明
-配置文件有两个，用于将测试环境、生产环境区分开分别是:  
+配置文件有两个，用于将测试环境、生产环境区分开, 分别是:  
 settings.ini.dev：测试环境配置文件，通过dev_restart.sh启动服务后，读取该文件作为配置文件。  
 settings.ini.prod：生产环境配置文件，通过prod_restart.sh启动服务后，读取该文件作为配置文件。  
 
