@@ -150,7 +150,8 @@ API_TOKEN = hotpot_api_token
 ```
 
 ##### 读取配置文件
-首先在settings.ini.dev中添加配置（如果是生产环境，添加到settings.ini.prod中）,例如：
+除了上述框架使用的配置之外，你还可以在settings.ini.dev或settings.ini.prod中添加自定义配置，并从代码中读取。例如：   
+首先在settings.ini.dev中添加配置（如果是生产环境，添加到settings.ini.prod中）
 ```ini
 API_TOKEN = hotpot_api_token
 ```
