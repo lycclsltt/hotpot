@@ -10,6 +10,7 @@
   - [配置文件说明](#配置文件说明)
   - [读取配置文件](#读取配置文件)
   - [ORM使用 (可参考model/example.py)](#orm使用-可参考modelexamplepy)
+  - [目录结构说明](#目录结构说明)
 
 ## hotpot是什么？
 
@@ -224,4 +225,33 @@ class OrmSelect(NoAuth):
         exampleModel = ExampleModel()
         rows = exampleModel.rows()
         return self.resp(data=rows)
+```
+##### 目录结构说明
+hotpot从开发者的角度出发，设想构建一个项目所需要的所有目录，无论你是添加脚本，定时任务，切割日志的配置文件，nginx配置文件还是业务代码，都可以按照下面目录的用途进行存放。这样做的目的是确保和项目相关的所有文件可以被保存起来，有利于项目的维护。
+```
+├── CHANGELOG.md    #表更记录, 都懂的
+├── README.md       #README.md， 都懂的 
+├── agileutil       #工具包
+├── app_init.py     #web服务启动前执行里面的app_init()方法 
+├── auth            #ldap验证相关工具
+├── controller      #控制器 (mvc中的c)
+├── db              #声明使用的数据库
+├── dev_restart.sh  #测试环境启动脚本
+├── engine          #框架相关代码
+├── hotpot.py       #框架启动的入口文件
+├── logger          #日志库
+├── logrotate       #用于存放需要切割的日志
+├── logs            #用于存放服务日志
+├── model           #模型层 (mvc中的m)
+├── nginx_conf      #用于存放nginx配置文件
+├── prod_restart.sh #生产环境启动脚本
+├── requirements.txt# #服务的所有依赖
+├── router            #用于添加路由
+├── script            #用于添加一些脚本
+├── settings.ini -> ./settings.ini.dev 
+├── settings.ini.dev  #测试环境配置文件
+├── settings.ini.prod #生产环境配置文件
+├── sql               #用于存放建标语句等
+├── static            #用于存放静态文件(html, js, css)
+└── task              #用于添加定时任务
 ```
