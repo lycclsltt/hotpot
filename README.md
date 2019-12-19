@@ -1,16 +1,14 @@
-<!-- TOC -->
+
 
 - [hotpot是什么？](#hotpot是什么)
 - [环境要求](#环境要求)
 - [快速开始](#快速开始)
-            - [快速开发一个API](#快速开发一个api)
-            - [获取GET/POST请求参数](#获取getpost请求参数)
-            - [返回json格式的接口数据](#返回json格式的接口数据)
-            - [服务端渲染 (与jinja2模版引擎语法一致)](#服务端渲染-与jinja2模版引擎语法一致)
-            - [读取配置文件](#读取配置文件)
-            - [ORM使用 (可参考model/example.py)](#orm使用-可参考modelexamplepy)
-
-<!-- /TOC -->
+    - [快速开发一个API](#快速开发一个api)
+    - [获取GET/POST请求参数](#获取getpost请求参数)
+    - [返回json格式的接口数据](#返回json格式的接口数据)
+    - [服务端渲染 (与jinja2模版引擎语法一致)](#服务端渲染-与jinja2模版引擎语法一致)
+    - [读取配置文件](#读取配置文件)
+    - [ORM使用 (可参考model/example.py)](#orm使用-可参考modelexamplepy)
 
 ## hotpot是什么？
 
