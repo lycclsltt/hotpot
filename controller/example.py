@@ -1,4 +1,11 @@
 from controller.common import NoAuth
+from model.example import ExampleModel
+
+class OrmSelect(NoAuth):
+    def handle(self):
+        exampleModel = ExampleModel()
+        rows = exampleModel.rows()
+        return self.resp(data=rows)
 
 
 class Hello(NoAuth):

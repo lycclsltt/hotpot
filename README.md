@@ -16,7 +16,7 @@
 3.执行./dev_restart.sh
 4.访问 http://127.0.0.1:10001/hello 
 ```
- 
+
 
 ##### 快速开发一个API
 ###### 1.在controller里创建一个类，继承NoAuth类，重写handle()方法（可参考controller/example.py）
@@ -89,3 +89,66 @@ class ReadConfig(NoAuth):
         return 'token is:' + token
 ```
 ###### 访问 http://127.0.0.1:10001/read_config
+
+##### ORM使用 (可参考model/example.py)
+###### 1.在model中创建一个类，继承CommonModel类
+```python
+from model.common import CommonModel
+from agileutil.db4 import Orm
+import db.mysql as dbInstance
+
+
+class ExampleModel(CommonModel):
+    def __init__(self):
+        #表名字
+        self.tableName = 'test_tb'
+
+    def add(self, name):
+        '''
+        insert示例
+        '''
+        return Orm(dbInstance).table(self.tableName).data({
+            'test_name': name,
+        }).insert()
+
+    def deleteByName(self, name):
+        '''
+        delete示例
+        '''
+        return Orm(dbInstance).table(self.tableName).where(
+            'test_name', '=', name).delete()
+
+    def updateRow(self, name, id):
+        '''
+        update示例
+        '''
+        return Orm(dbInstance).table(self.tableName).where('id', id).data({
+            'test_name': name,
+        }).update()
+
+    def rows(self):
+        '''
+        select示例
+        '''
+        rows = Orm(dbInstance).table(self.tableName).get()
+        return rows
+
+    def getByName(self, name):
+        '''
+        select示例
+        '''
+        row = Orm(dbInstance).table(self.tableName).where(
+            'test_name', '=', name).first()
+        return row
+```
+###### 2.在controller中调用
+```python
+from controller.common import NoAuth
+from model.example import ExampleModel
+
+class OrmSelect(NoAuth):
+    def handle(self):
+        exampleModel = ExampleModel()
+        rows = exampleModel.rows()
+        return self.resp(data=rows)
+```

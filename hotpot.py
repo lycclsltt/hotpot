@@ -3,6 +3,8 @@ import logger.logger as log
 from engine.app_factory import AppFactory
 import app_init
 
+app_init.app_init()
+
 #创建应用
 app = AppFactory.createApp(__name__)
 
