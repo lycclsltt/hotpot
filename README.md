@@ -14,9 +14,7 @@
 
 ## hotpot是什么？
 
-hotpot是一个简单、易用的python框架。基于高性能sanic, 集成了Session/ORM/日志处理/LDAP 以及常用工具类库。使用hotpot可以快速进行业务开发，例如编写网站或API。相比django更简单，轻松上手。相比flask, web.py 等框架，更具有规范性，更适合大型工程，同时性能更好。
-   
-hotpot设计的初衷是：python代码拥有很高的开发效率，但由于开发者能力不同，易造成开发速度快，后期维护成本高的问题。hotpot希望通过框架的约定规则和限制规避此类问题，增强python程序的可维护性。
+是在sanic框架基础上进行的二次封装。 集成了Session/ORM/日志处理/LDAP，以及常用工具类库。可以快速进行业务开发，例如编写网站或API。相比Django更简单。相比flask,web.py，更具有规范性，更适合大型工程，性能更好。做到开箱即用。
 
 
 ## 环境要求
@@ -28,8 +26,9 @@ python3.6+
 ```shell script
 1.获取源码: git clone 或从git 下载
 2.安装依赖: pip3 install -r ./requirements.txt
-3.执行./dev_restart.sh
-4.访问 http://127.0.0.1:10001/hello 
+3.mkdir logs
+4.执行./dev_restart.sh
+5.访问 http://127.0.0.1:10001/hello 
 ```
 
 
@@ -232,12 +231,12 @@ class OrmSelect(NoAuth):
 ##### 目录结构说明
 hotpot从开发者的角度出发，设想构建一个项目所需要的所有目录，无论你是添加脚本，定时任务，切割日志的配置文件，nginx配置文件还是业务代码，都可以按照下面目录的用途进行存放。这样做的目的是确保和项目相关的所有文件可以被保存起来，有利于项目的维护。
 ```
-├── CHANGELOG.md    #表更记录, 都懂的
-├── README.md       #README.md， 都懂的 
+├── CHANGELOG.md    #变更记录
+├── README.md       #README.md 
 ├── agileutil       #工具包
 ├── app_init.py     #web服务启动前执行里面的app_init()方法 
 ├── auth            #ldap验证相关工具
-├── controller      #控制器 (mvc中的c)
+├── controller      #控制器
 ├── db              #声明使用的数据库
 ├── dev_restart.sh  #测试环境启动脚本
 ├── engine          #框架相关代码
@@ -245,7 +244,7 @@ hotpot从开发者的角度出发，设想构建一个项目所需要的所有�
 ├── logger          #日志库
 ├── logrotate       #用于存放需要切割的日志
 ├── logs            #用于存放服务日志
-├── model           #模型层 (mvc中的m)
+├── model           #模型层
 ├── nginx_conf      #用于存放nginx配置文件
 ├── prod_restart.sh #生产环境启动脚本
 ├── requirements.txt# #服务的所有依赖
@@ -255,6 +254,6 @@ hotpot从开发者的角度出发，设想构建一个项目所需要的所有�
 ├── settings.ini.dev  #测试环境配置文件
 ├── settings.ini.prod #生产环境配置文件
 ├── sql               #用于存放建标语句等
-├── static            #用于存放静态文件(html, js, css)
+├── static            #用于存放静态文件
 └── task              #用于添加定时任务
 ```
