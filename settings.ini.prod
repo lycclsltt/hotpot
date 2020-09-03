@@ -1,5 +1,8 @@
 [settings]
 
+#版本号
+VERSION = 0.0.1
+
 #请求日志
 ACCESS_LOG = false
 
@@ -13,10 +16,13 @@ LOG_OUTPUT = false
 PORT = 10001
 
 #工作线程数
-WORKER_NUM = 1
+WORKER_NUM = 4
 
 #日志文件
-LOG_FILE = ./logs/ui.log
+LOG_FILE = ./logs/app.log
+
+#是否启用session
+SESSION_ENABLE = true
 
 #session过期时间
 SESSION_EXPIRE = 36000
@@ -28,7 +34,14 @@ DB_USER = xdev
 DB_PWD = xdev
 DB_NAME = test_db
 
+DB_POOL_MIN_CONNECTION = 10
+DB_POOL_CONNECT_TIMEOUT = 10
+DB_POOL_READ_TIMEOUT = 10
+
 ###ldap登录验证
 LDAP_SERVER = ldap://10.10.36.28:389
 LDAP_BIND = CN=readonly,CN=Users,DC=xxxxx,DC=com
 LDAP_PASS = xxxxx
+
+#API用于验证的token
+API_TOKEN = hotpot_api_token

@@ -16,6 +16,7 @@ class AppFactory:
                         expiry=int(config('SESSION_EXPIRE'))))
         #加载路由
         for uri, action in router.routers.items():
+            print('route:', uri)
             app.add_route(action.as_view(), uri)
         #设置静态目录
         app.static('/static', './static')
