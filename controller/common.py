@@ -1,6 +1,6 @@
 from sanic.response import text, html
 from sanic.views import HTTPMethodView
-import demjson
+import ujson
 from jinja2 import Environment, FileSystemLoader
 from sanic import response
 from decouple import config
@@ -65,7 +65,7 @@ class Common(HTTPMethodView):
 
     def resp(self, errno=0, errmsg='', data=''):
         ret = {'errno': errno, 'errmsg': str(errmsg), 'data': data}
-        return demjson.encode(ret)
+        return ujson.dumps(ret)
 
     def render(self, tpl):
         template = Common.env.get_template(tpl)
