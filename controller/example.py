@@ -34,3 +34,8 @@ class ReadConfig(NoAuth):
     def handle(self):
         token = config('API_TOKEN')
         return 'token is:' + token
+
+
+class Status(NoAuth):
+    def handle(self):
+        return 'ok'

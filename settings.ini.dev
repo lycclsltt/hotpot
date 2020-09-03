@@ -4,7 +4,7 @@
 VERSION = 0.0.1
 
 #请求日志
-ACCESS_LOG = false
+ACCESS_LOG = true
 
 #用于调试，生产环境设为false
 DEBUG = true

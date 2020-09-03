@@ -8,6 +8,7 @@ class AppFactory:
     @classmethod
     def createApp(cls, appName):
         app = Sanic(appName)
+        print('version:', config('VERSION'))
         #判断session
         if config('SESSION_ENABLE') == 'true':
             # 启用session
