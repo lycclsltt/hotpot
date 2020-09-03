@@ -60,6 +60,9 @@ class Common(HTTPMethodView):
 
         return v.strip()
 
+    def param(self, k):
+        return self.req(k)
+
     def resp(self, errno=0, errmsg='', data=''):
         ret = {'errno': errno, 'errmsg': str(errmsg), 'data': data}
         return demjson.encode(ret)
