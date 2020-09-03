@@ -1,5 +1,6 @@
 from controller.common import NoAuth
 from model.example import ExampleModel
+from decouple import config
 
 
 class OrmSelect(NoAuth):
@@ -25,9 +26,6 @@ class Page(NoAuth):
         name = self.param('name')
         self.data['name'] = name
         return self.render('page.html')
-
-
-from decouple import config
 
 
 class ReadConfig(NoAuth):
