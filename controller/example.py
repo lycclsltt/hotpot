@@ -39,3 +39,8 @@ class ReadConfig(NoAuth):
 class Status(NoAuth):
     def handle(self):
         return 'ok'
+
+
+class Json(NoAuth):
+    def handle(self):
+        return self.resp(errno=1, errmsg='test', data='test')

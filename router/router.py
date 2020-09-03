@@ -1,4 +1,4 @@
-from controller.example import Hello, GetParam, Page, ReadConfig, OrmSelect, Status
+from controller.example import Hello, GetParam, Page, ReadConfig, OrmSelect, Status, Json
 
 routers = {
     '/hello': Hello,
@@ -6,5 +6,6 @@ routers = {
     '/page': Page,
     '/read_config': ReadConfig,
     '/orm/select': OrmSelect,
-    '/status': Status
+    '/status': Status,
+    '/return.json': Json,
 }
