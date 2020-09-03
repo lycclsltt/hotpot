@@ -28,7 +28,8 @@ class ExampleModel(CommonModel):
         update示例
         '''
         return Orm(dbInstance).table(self.tableName).where('id', id).data({
-            'test_name': name,
+            'test_name':
+            name,
         }).update()
 
     def rows(self):
